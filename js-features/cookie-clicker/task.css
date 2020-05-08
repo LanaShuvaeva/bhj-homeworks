@@ -1,0 +1,28 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+}
+
+.clicker__stat {
+    background-color: #AB9090;
+    text-align: center;
+    margin: auto;
+    font-size: 1rem;
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+}
+
+.clicker__status {
+    align-content: center;
+    color: white;
+}
+
+
+#clicker__speed, #clicker__counter {
+    font-size: 1.5rem;
+}
+
+#cookie {
+    position: absolute;
+}
