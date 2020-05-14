@@ -10,5 +10,10 @@ holes.forEach((hole) => {
         dead.innerHTML = 0;
         lost.innerHTML = 0;
     }
+    if (lost.innerHTML > 5) {
+        alert("You lost! Try again later");
+        dead.innerHTML = 0;
+        lost.innerHTML = 0;
+    }
     })
 });
