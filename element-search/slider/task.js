@@ -15,10 +15,10 @@ rightArrow.addEventListener("click", () => {
         addDot();
         return;
     }
-        slides[slides.length - 1].classList.remove("slider__item_active");
-        slides[0].classList.add("slider__item_active");
-        activeSlide = document.querySelector(".slider__item_active");
-        addDot();
+    slides[slides.length - 1].classList.remove("slider__item_active");
+    slides[0].classList.add("slider__item_active");
+    activeSlide = document.querySelector(".slider__item_active");
+    addDot();
 })
 
 leftArrow.addEventListener("click", () => {
@@ -28,11 +28,11 @@ leftArrow.addEventListener("click", () => {
         activeSlide = document.querySelector(".slider__item_active");
         addDot();
         return;
-    }   
-        slides[0].classList.remove("slider__item_active");
-        slides[slides.length - 1].classList.add("slider__item_active");
-        activeSlide = document.querySelector(".slider__item_active");
-        addDot();
+    }
+    slides[0].classList.remove("slider__item_active");
+    slides[slides.length - 1].classList.add("slider__item_active");
+    activeSlide = document.querySelector(".slider__item_active");
+    addDot();
 })
 
 function findIndx() {
@@ -44,14 +44,9 @@ function findIndx() {
 }
 
 function addDot() {
-        slider__dots[findIndx()].classList.add("slider__dot_active");
-        slider__dots[slides.length -1].classList.remove("slider__dot_active");
-
+    slider__dots.forEach(slide => slide.classList.remove("slider__dot_active"));
     slider__dots[findIndx()].classList.add("slider__dot_active");
-    slider__dots[findIndx()].previousElementSibling.classList.remove("slider__dot_active");
 }
-
-
 
 
 
