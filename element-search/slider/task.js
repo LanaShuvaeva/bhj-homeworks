@@ -8,7 +8,6 @@ const leftArrow = document.querySelector(".slider__arrow_prev");
 const rightArrow = document.querySelector(".slider__arrow_next");
 
 rightArrow.addEventListener("click", () => {
-    slides.forEach(slide => slide.classList.remove("slider__item_active"));
     if (activeSlide.nextElementSibling !== null) {
         activeSlide.nextElementSibling.classList.add("slider__item_active");
         addDot();
@@ -20,7 +19,6 @@ rightArrow.addEventListener("click", () => {
 })
 
 leftArrow.addEventListener("click", () => {
-    slides.forEach(slide => slide.classList.remove("slider__item_active"));
     if (activeSlide.previousElementSibling !== null) {
         activeSlide.previousElementSibling.classList.add("slider__item_active");
         addDot();
@@ -31,8 +29,9 @@ leftArrow.addEventListener("click", () => {
 })
 
 function addDot() {
+    activeSlide.classList.remove("slider__dot_active");
+    slides.forEach(slide => slide.classList.remove("slider__item_active"));
     const index = slides.findIndex(el => el.classList.contains("slider__item_active"));
-    slider__dots.forEach(dot => dot.classList.remove("slider__dot_active"));
     slider__dots[index].classList.add("slider__dot_active");
     activeSlide = slides[index];
 }
