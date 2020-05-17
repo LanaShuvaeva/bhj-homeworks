@@ -9,5 +9,7 @@ menu__links.forEach(menu__link => {
             menu__link.nextElementSibling.classList.add("menu_active");
             return false;
         } 
+        menu__link.nextElementSibling.classList.remove("menu_active");
+        return false;
     };
 });
