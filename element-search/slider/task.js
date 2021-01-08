@@ -3,6 +3,7 @@
 const slides = Array.from(document.querySelectorAll(".slider__item"));
 const arrSliderDots = Array.from(document.querySelectorAll(".slider__dot"));
 
+
 let activeSlide = document.querySelector(".slider__item_active");
 
 const leftArrow = document.querySelector(".slider__arrow_prev");
@@ -47,4 +48,21 @@ leftArrow.addEventListener("click", () => {
 
     arrSliderDots[slides.length - 1].classList.add("slider__dot_active");
 })
+
+
+for(let i = 0; i < slides.length; i++){
+    console.log(i);
+arrSliderDots[i].addEventListener("click", () => {
+    arrSliderDots[slideNumber].classList.remove("slider__dot_active");
+    slides[slideNumber].classList.remove("slider__item_active");
+
+    arrSliderDots[i].classList.add("slider__dot_active");
+    slideNumber = i;
+    slides[slideNumber].classList.add("slider__item_active");
+
+    return;
+})
+}
+
+
 
