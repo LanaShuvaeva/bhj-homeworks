@@ -1,37 +1,50 @@
 'use strict'
 
 const slides = Array.from(document.querySelectorAll(".slider__item"));
+const arrSliderDots = Array.from(document.querySelectorAll(".slider__dot"));
+
 let activeSlide = document.querySelector(".slider__item_active");
-const slider__dots = document.querySelectorAll(".slider__dot");
 
 const leftArrow = document.querySelector(".slider__arrow_prev");
 const rightArrow = document.querySelector(".slider__arrow_next");
 
+let slideNumber = 0;
+
+
 rightArrow.addEventListener("click", () => {
-    if (activeSlide.nextElementSibling !== null) {
-        activeSlide.nextElementSibling.classList.add("slider__item_active");
-        addDot();
+    if (slideNumber + 1 < slides.length) {
+        slides[slideNumber].nextElementSibling.classList.add("slider__item_active");
+        slides[slideNumber].classList.remove("slider__item_active");
+        slideNumber += 1;
+
+        arrSliderDots[slideNumber].classList.add("slider__dot_active");
+        arrSliderDots[slideNumber].previousElementSibling.classList.remove("slider__dot_active");
         return;
     }
+    
     slides[0].classList.add("slider__item_active");
-    activeSlide = document.querySelector(".slider__item_active");
-    addDot();
+    slides[slideNumber].classList.remove("slider__item_active");
+    slideNumber = 0;
+
+    arrSliderDots[0].classList.add("slider__dot_active");
+    arrSliderDots[slides.length - 1].classList.remove("slider__dot_active");
 })
 
 leftArrow.addEventListener("click", () => {
-    if (activeSlide.previousElementSibling !== null) {
-        activeSlide.previousElementSibling.classList.add("slider__item_active");
-        addDot();
+    if (slideNumber - 1 >= 0) {
+        slides[slideNumber].previousElementSibling.classList.add("slider__item_active");
+        slides[slideNumber].classList.remove("slider__item_active");
+        slideNumber -= 1;
+
+        arrSliderDots[slideNumber].classList.add("slider__dot_active");
+        arrSliderDots[slideNumber].nextElementSibling.classList.remove("slider__dot_active");
         return;
     }
     slides[slides.length - 1].classList.add("slider__item_active");
-    addDot();
+    slides[slideNumber].classList.remove("slider__item_active");
+    arrSliderDots[slideNumber].classList.remove("slider__dot_active");
+    slideNumber = slides.length - 1;
+
+    arrSliderDots[slides.length - 1].classList.add("slider__dot_active");
 })
 
-function addDot() {
-    activeSlide.classList.remove("slider__dot_active");
-    slides.forEach(slide => slide.classList.remove("slider__item_active"));
-    const index = slides.findIndex(el => el.classList.contains("slider__item_active"));
-    slider__dots[index].classList.add("slider__dot_active");
-    activeSlide = slides[index];
-}
