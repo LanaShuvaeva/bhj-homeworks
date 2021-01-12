@@ -2,67 +2,42 @@
 
 const slides = Array.from(document.querySelectorAll(".slider__item"));
 const arrSliderDots = Array.from(document.querySelectorAll(".slider__dot"));
-
-
-let activeSlide = document.querySelector(".slider__item_active");
-
 const leftArrow = document.querySelector(".slider__arrow_prev");
 const rightArrow = document.querySelector(".slider__arrow_next");
 
 let slideNumber = 0;
 
+function showSlide(active) {
+    slides[slideNumber].classList.remove("slider__item_active");
+    slides[active].classList.add("slider__item_active");
+
+    arrSliderDots[slideNumber].classList.remove("slider__dot_active");
+    arrSliderDots[active].classList.add("slider__dot_active");
+}
 
 rightArrow.addEventListener("click", () => {
     if (slideNumber + 1 < slides.length) {
-        slides[slideNumber].nextElementSibling.classList.add("slider__item_active");
-        slides[slideNumber].classList.remove("slider__item_active");
+        showSlide(slideNumber + 1);
         slideNumber += 1;
-
-        arrSliderDots[slideNumber].classList.add("slider__dot_active");
-        arrSliderDots[slideNumber].previousElementSibling.classList.remove("slider__dot_active");
         return;
     }
-    
-    slides[0].classList.add("slider__item_active");
-    slides[slideNumber].classList.remove("slider__item_active");
+    showSlide(0);
     slideNumber = 0;
-
-    arrSliderDots[0].classList.add("slider__dot_active");
-    arrSliderDots[slides.length - 1].classList.remove("slider__dot_active");
-})
+});
 
 leftArrow.addEventListener("click", () => {
     if (slideNumber - 1 >= 0) {
-        slides[slideNumber].previousElementSibling.classList.add("slider__item_active");
-        slides[slideNumber].classList.remove("slider__item_active");
+        showSlide(slideNumber - 1);
         slideNumber -= 1;
-
-        arrSliderDots[slideNumber].classList.add("slider__dot_active");
-        arrSliderDots[slideNumber].nextElementSibling.classList.remove("slider__dot_active");
         return;
     }
-    slides[slides.length - 1].classList.add("slider__item_active");
-    slides[slideNumber].classList.remove("slider__item_active");
-    arrSliderDots[slideNumber].classList.remove("slider__dot_active");
+    showSlide(slides.length - 1);
     slideNumber = slides.length - 1;
+});
 
-    arrSliderDots[slides.length - 1].classList.add("slider__dot_active");
-})
-
-
-for(let i = 0; i < slides.length; i++){
-    console.log(i);
-arrSliderDots[i].addEventListener("click", () => {
-    arrSliderDots[slideNumber].classList.remove("slider__dot_active");
-    slides[slideNumber].classList.remove("slider__item_active");
-
-    arrSliderDots[i].classList.add("slider__dot_active");
-    slideNumber = i;
-    slides[slideNumber].classList.add("slider__item_active");
-
-    return;
-})
-}
-
-
-
+for (let i = 0; i < slides.length; i++) {
+    arrSliderDots[i].addEventListener("click", () => {
+        showSlide(i);
+        slideNumber = i;
+    });
+};
