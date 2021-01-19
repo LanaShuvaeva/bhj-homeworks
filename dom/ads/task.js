@@ -1,5 +1,5 @@
 const ads = document.getElementsByClassName("rotator__case");
-let intervalSet;
+let speed;
 let activeAd = ads[0];
 
 function rotatorFunc() {
@@ -9,12 +9,12 @@ function rotatorFunc() {
             ads[i+1] ? activeAd = ads[i+1] : activeAd = ads[0];
             activeAd.classList.add("rotator__case_active");
             activeAd.style.color = activeAd.getAttribute("data-color");
-            intervalSet = ads[i].getAttribute("data-speed");
-            return intervalSet;
+            speed = ads[i].getAttribute("data-speed");
+            return setTimeout(rotatorFunc, speed);
         }
     }
 }
 
-intervalSet = rotatorFunc();
-setInterval(rotatorFunc, intervalSet);
+let timer = setTimeout(rotatorFunc, speed);
+
 
