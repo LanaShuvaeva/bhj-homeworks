@@ -32,30 +32,3 @@ xhr.addEventListener('readystatechange', () => {
     }
 }
 )
-
-
-
-
-// let xhr = new XMLHttpRequest();
-// xhr.open('GET', 'https://netology-slow-rest.herokuapp.com');
-// xhr.responseType = 'json';
-// xhr.send();
-
-// function cloneItem (currency, value) {
-//     let item = document.querySelector('item'.content).cloneNode(true);
-//     item.querySelector('item__code').textContent = currency;
-//     item.querySelector('item__value').textContent = value;
-//     document.getElementById('items').appendChild(item);
-// }
-
-// xhr.addEventListener('readystatechange', () => {
-//     if (xhr.readyState === xhr.DONE) {
-//         xhr.response.response.Valute.forEach(charCode, () => {
-//             let value = xhr.response.response.Valute[charCode].Value;
-
-//             cloneItem(charCode, value);
-//             document.getElementById('loader').classList.remove('loader_active');
-//         })
-//     }
-// }
-// )
