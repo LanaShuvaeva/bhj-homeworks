@@ -1,6 +1,7 @@
 let inputText = document.getElementById("task__input");
 
-function addNewTask() {
+function addNewTask(e) {
+    e.preventDefault();
     if(inputText.value.length > 0) {
     let newTask = document.createElement("div");
     newTask.setAttribute("class", "task");
@@ -16,11 +17,15 @@ function addNewTask() {
 };
 
 function deleteTask(e) {
-    e.target.classList.contains("task__remove") ? e.target.parentElement.remove() : e.target;
+    if ( e.target.classList.contains("task__remove")) {
+        e.target.parentElement.remove();
+    }
 }
 
 inputText.addEventListener("keypress", e => {
-    e.key === "Enter" ? addNewTask() : console.log("Press enter");
+    if (e.key === "Enter") {
+        addNewTask();
+    }
 })
 
 document.getElementById("tasks__add").addEventListener("click", addNewTask);
