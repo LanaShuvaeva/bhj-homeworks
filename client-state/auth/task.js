@@ -9,10 +9,9 @@ let welcome = document.getElementById('welcome');
 window.onload = () => signin.classList.add('signin_active');
 
 form.addEventListener('submit', e => {
-    let formData = new FormData();
+    let formData = new FormData(document.getElementById('signin__form'));
     let xhr = new XMLHttpRequest();
     xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/auth.php', true);
-    formData.append(`${inputLogin.value}`, `${inputPassword.value}`);
     xhr.addEventListener('readystatechange', function() {
         if (this.readyState == xhr.DONE && this.status == 200) {
             let data = JSON.parse(this.responseText);
@@ -24,6 +23,7 @@ form.addEventListener('submit', e => {
             } else {
                 signin.classList.remove('signin_active');
                 welcome.classList.add('welcome_active');
+                document.getElementById('user_id').innerText = data.user_id;
             }
             
         }
@@ -31,5 +31,3 @@ form.addEventListener('submit', e => {
     xhr.send(formData);
     e.preventDefault();
 })
-
-
