@@ -10,7 +10,6 @@ window.onload = () => {
     }
 }
 
-
 btnClosePopup.onclick = () => {
     document.cookie = 'closedPopup=true';
     subscribePopup.classList.remove('modal_active');
