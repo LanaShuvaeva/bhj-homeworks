@@ -22,11 +22,5 @@ function deleteTask(e) {
     }
 }
 
-inputText.addEventListener("keypress", e => {
-    if (e.key === "Enter") {
-        addNewTask();
-    }
-})
-
 document.getElementById("tasks__add").addEventListener("click", addNewTask);
 document.getElementById("tasks__list").addEventListener("click", deleteTask);
